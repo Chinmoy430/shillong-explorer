@@ -1,4 +1,4 @@
-﻿/* ============================================================
+/* ============================================================
    SAWAIOM TRAVELS AGENCY — Main Public Stylesheet
    ============================================================ */
 
@@ -1576,8 +1576,23 @@ input, textarea, select { font-family: inherit; }
   .contact-grid { grid-template-columns: 1fr; }
 }
 @media (max-width: 768px) {
+  /* Hide desktop nav links */
   .nav-links { display: none; }
+  /* Show hamburger */
   .hamburger { display: flex; }
+  /* Hide Book a Tour button on mobile — it's in the mobile menu */
+  .nav-book-btn { display: none; }
+  /* Hide Sign In text button on mobile — accessible via mobile menu */
+  .nav-signin-btn { display: none !important; }
+  /* Keep avatar/user icon visible but compact */
+  .nav-user-name { display: none; }
+  /* Navbar height a bit smaller on mobile */
+  .nav { height: 64px; padding: 0 16px; }
+  /* Logo constraints */
+  .logo { gap: 8px; }
+  .logo img { height: 36px !important; }
+  .logo span { font-size: 1rem !important; max-width: 140px; overflow: hidden; text-overflow: ellipsis; }
+  /* Content */
   .hero h1 { font-size: 2.2rem; }
   .hero-stats { gap: 20px; }
   .attractions-grid { grid-template-columns: 1fr; }
@@ -1589,11 +1604,12 @@ input, textarea, select { font-family: inherit; }
   .why-grid { grid-template-columns: 1fr 1fr; }
 }
 @media (max-width: 480px) {
-  .nav { padding: 0 16px; }
   .container { padding: 0 16px; }
   .hero-actions { flex-direction: column; align-items: center; }
   .why-grid { grid-template-columns: 1fr; }
   .hero-stats { flex-direction: row; justify-content: center; gap: 24px; }
+  /* Very small screens: tighten logo further */
+  .logo span { font-size: 0.9rem !important; max-width: 110px; }
 }
 
 /* ====================================================
