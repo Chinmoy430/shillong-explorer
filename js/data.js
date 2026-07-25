@@ -271,9 +271,10 @@ const DEFAULT_DATA = {
   }
 };
 
-// Initialize data in localStorage if not already present
+// Initialize data in localStorage — bump DATA_VERSION to force-refresh all visitors
+const DATA_VERSION = 'v2'; // bumped for SAWAIOM TRAVELS AGENCY rebrand
 function initializeData() {
-  if (!localStorage.getItem('se_initialized')) {
+  if (localStorage.getItem('se_initialized') !== DATA_VERSION) {
     localStorage.setItem('se_siteSettings', JSON.stringify(DEFAULT_DATA.siteSettings));
     localStorage.setItem('se_hero', JSON.stringify(DEFAULT_DATA.hero));
     localStorage.setItem('se_categories', JSON.stringify(DEFAULT_DATA.categories));
@@ -281,7 +282,7 @@ function initializeData() {
     localStorage.setItem('se_tours', JSON.stringify(DEFAULT_DATA.tours));
     localStorage.setItem('se_testimonials', JSON.stringify(DEFAULT_DATA.testimonials));
     localStorage.setItem('se_adminCredentials', JSON.stringify(DEFAULT_DATA.adminCredentials));
-    localStorage.setItem('se_initialized', 'true');
+    localStorage.setItem('se_initialized', DATA_VERSION);
   }
 }
 
