@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us — Shillong Explorer</title>
+  <meta name="description" content="Contact Shillong Explorer to book a tour or plan your trip to Meghalaya. Call, email, or WhatsApp us.">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏔️</text></svg>">
+</head>
+<body id="contact-page">
+
+<!-- Mobile Menu -->
+<nav class="mobile-menu" id="mobile-menu">
+  <span class="mobile-menu-close" id="mobile-menu-close">✕</span>
+  <a href="index.html">🏠 Home</a>
+  <a href="attractions.html">🗺️ Attractions</a>
+  <a href="tours.html">🧳 Tour Packages</a>
+  <a href="contact.html">📞 Contact</a>
+  <a href="auth.html">👤 Sign In / My Account</a>
+</nav>
+
+<!-- Header -->
+<header class="header scrolled" id="header">
+  <nav class="nav">
+    <a href="index.html" class="logo">
+      <div class="logo-icon">🏔️</div>
+      <span class="site-name">Shillong Explorer</span>
+    </a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="attractions.html">Attractions</a>
+      <a href="tours.html">Tour Packages</a>
+      <a href="contact.html" class="active">Contact</a>
+    </div>
+    <div class="nav-cta">
+      <a href="contact.html" class="nav-book-btn">Book a Tour</a>
+      <div class="nav-user-area" id="nav-user-area"></div>
+      <button class="hamburger" id="hamburger" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+</header>
+
+<!-- Page Hero -->
+<section class="page-hero">
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="index.html">Home</a> › <span>Contact Us</span>
+    </div>
+    <h1>Get in Touch</h1>
+    <p>We'd love to help you plan your dream Meghalaya trip</p>
+  </div>
+</section>
+
+<!-- Contact Section -->
+<section class="section-pad" style="padding-top:48px;">
+  <div class="container">
+    <div class="contact-grid">
+      <!-- Contact Form -->
+      <div>
+        <div class="contact-form">
+          <div class="section-label" style="margin-bottom:8px;">Send Us a Message</div>
+          <h2 style="font-size:1.6rem;font-weight:700;margin-bottom:8px;color:var(--text);">Plan Your Trip</h2>
+          <p style="font-size:0.9rem;color:var(--text-light);margin-bottom:24px;">Fill in your details and we'll connect you on WhatsApp instantly.</p>
+
+          <form id="contact-form">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="contact-name">Full Name *</label>
+                <input type="text" id="contact-name" placeholder="Your full name" required>
+              </div>
+              <div class="form-group">
+                <label for="contact-phone">Phone Number *</label>
+                <input type="tel" id="contact-phone" placeholder="+91 98765 43210" required>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="contact-email">Email Address</label>
+              <input type="email" id="contact-email" placeholder="your@email.com">
+            </div>
+            <div class="form-group">
+              <label for="contact-tour">Interested Package</label>
+              <select id="contact-tour">
+                <option value="">Select a tour (optional)</option>
+                <option>Shillong City Highlights</option>
+                <option>Shillong–Cherrapunji Day Trip</option>
+                <option>Meghalaya Explorer (5 Days)</option>
+                <option>Living Root Bridge Trek</option>
+                <option>Dawki & Mawlynnong Day Trip</option>
+                <option>Laitlum Canyon Sunrise Trek</option>
+                <option>Custom Tour Package</option>
+              </select>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="contact-date">Preferred Travel Date</label>
+                <input type="date" id="contact-date">
+              </div>
+              <div class="form-group">
+                <label for="contact-people">Number of People</label>
+                <input type="number" id="contact-people" placeholder="2" min="1" max="50">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="contact-message">Your Message *</label>
+              <textarea id="contact-message" placeholder="Tell us about your trip requirements, special requests, budget etc." required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;font-size:1rem;padding:14px;">
+              💬 Send via WhatsApp →
+            </button>
+            <p style="font-size:0.78rem;color:var(--text-light);text-align:center;margin-top:10px;">We typically respond within 30 minutes during business hours.</p>
+          </form>
+        </div>
+      </div>
+
+      <!-- Contact Info -->
+      <div>
+        <div class="contact-info-card">
+          <h3 style="font-size:1.1rem;font-weight:700;color:var(--text);margin-bottom:24px;">Our Contact Info</h3>
+          <div class="contact-info-item">
+            <div class="contact-info-icon">📞</div>
+            <div class="contact-info-text">
+              <strong>Phone</strong>
+              <span class="site-phone">+91 98765 43210</span>
+            </div>
+          </div>
+          <div class="contact-info-item">
+            <div class="contact-info-icon">✉️</div>
+            <div class="contact-info-text">
+              <strong>Email</strong>
+              <span class="site-email">hello@shillongexplorer.com</span>
+            </div>
+          </div>
+          <div class="contact-info-item">
+            <div class="contact-info-icon">📍</div>
+            <div class="contact-info-text">
+              <strong>Address</strong>
+              <span class="site-address">Police Bazar, Shillong, Meghalaya 793001</span>
+            </div>
+          </div>
+          <div class="contact-info-item">
+            <div class="contact-info-icon">🕐</div>
+            <div class="contact-info-text">
+              <strong>Working Hours</strong>
+              <span>Mon–Sat: 8:00 AM – 8:00 PM<br>Sun: 9:00 AM – 5:00 PM</span>
+            </div>
+          </div>
+          <a href="#" class="btn whatsapp-btn site-whatsapp" target="_blank" id="whatsapp-direct">
+            💬 Chat on WhatsApp Now
+          </a>
+        </div>
+
+        <!-- Map placeholder -->
+        <div style="background:var(--light-2);border-radius:16px;height:220px;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:12px;border:2px dashed var(--gray-light);">
+          <span style="font-size:3rem;">🗺️</span>
+          <span style="font-size:0.85rem;color:var(--text-light);">Police Bazar, Shillong</span>
+          <a href="https://www.google.com/maps/search/Police+Bazar+Shillong+Meghalaya" target="_blank" class="btn btn-outline" style="padding:8px 20px;font-size:0.82rem;">Open in Google Maps</a>
+        </div>
+
+        <!-- Social Media -->
+        <div style="margin-top:20px;background:white;border-radius:16px;padding:24px;box-shadow:0 2px 8px rgba(0,0,0,0.06);">
+          <h4 style="font-size:0.9rem;font-weight:700;color:var(--text);margin-bottom:16px;">Follow Our Adventures</h4>
+          <div style="display:flex;flex-direction:column;gap:10px;">
+            <a href="#" class="social-fb" target="_blank" style="display:flex;align-items:center;gap:12px;padding:10px;border-radius:8px;background:rgba(24,119,242,0.05);color:#1877f2;font-size:0.88rem;font-weight:600;text-decoration:none;transition:all 0.2s;">
+              <span style="font-size:1.1rem;">f</span> Follow on Facebook
+            </a>
+            <a href="#" class="social-ig" target="_blank" style="display:flex;align-items:center;gap:12px;padding:10px;border-radius:8px;background:rgba(225,48,108,0.05);color:#e1306c;font-size:0.88rem;font-weight:600;text-decoration:none;transition:all 0.2s;">
+              <span style="font-size:1.1rem;">📷</span> Follow on Instagram
+            </a>
+            <a href="#" class="social-yt" target="_blank" style="display:flex;align-items:center;gap:12px;padding:10px;border-radius:8px;background:rgba(255,0,0,0.05);color:#ff0000;font-size:0.88rem;font-weight:600;text-decoration:none;transition:all 0.2s;">
+              <span style="font-size:1.1rem;">▶</span> Subscribe on YouTube
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="logo"><div class="logo-icon">🏔️</div><span class="site-name">Shillong Explorer</span></a>
+        <p>Your trusted travel partner for exploring Shillong and Meghalaya.</p>
+      </div>
+      <div>
+        <h4 class="footer-heading">Explore</h4>
+        <ul class="footer-links">
+          <li><a href="attractions.html">Attractions</a></li>
+          <li><a href="tours.html">Tour Packages</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="footer-heading">Contact</h4>
+        <div class="footer-contact-item"><span class="icon">📞</span><span class="site-phone">+91 98765 43210</span></div>
+        <div class="footer-contact-item"><span class="icon">✉️</span><span class="site-email">hello@shillongexplorer.com</span></div>
+      </div>
+      <div>
+        <h4 class="footer-heading">Quick Links</h4>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="admin/index.html">Admin Panel</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 <span class="site-name">Shillong Explorer</span>. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- Firebase SDKs (compat) -->
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+<script src="js/firebase-config.js"></script>
+<script src="js/user-auth.js"></script>
+<script src="js/data.js"></script>
+<script src="js/main.js"></script>
+<script>
+  document.getElementById('hamburger')?.addEventListener('click', () => document.getElementById('mobile-menu').classList.add('open'));
+  document.getElementById('mobile-menu-close')?.addEventListener('click', () => document.getElementById('mobile-menu').classList.remove('open'));
+</script>
+</body>
+</html>

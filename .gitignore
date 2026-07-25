@@ -1,0 +1,34 @@
+# ============================================================
+# Shillong Explorer — .gitignore
+# ============================================================
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor / IDE
+.vscode/
+.idea/
+*.suo
+*.user
+
+# Logs
+*.log
+npm-debug.log*
+
+# Environment / secrets (never commit these)
+.env
+.env.local
+.env.production
+
+# Gemini / AI agent files
+.gemini/
+
+# Node (if ever added)
+node_modules/
+dist/
+build/
+
+# Netlify
+.netlify/

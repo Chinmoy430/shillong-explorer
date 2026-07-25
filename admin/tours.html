@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manage Tours — Admin</title>
+  <link rel="stylesheet" href="../css/admin.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚙️</text></svg>">
+</head>
+<body>
+<div class="admin-layout">
+  <!-- Sidebar -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-logo">
+      <div class="sidebar-logo-icon">🏔️</div>
+      <div>
+        <div class="sidebar-logo-text">Shillong Explorer</div>
+        <div class="sidebar-logo-sub">Admin Panel</div>
+      </div>
+    </div>
+    <nav class="sidebar-nav">
+      <div class="sidebar-section-label">Main</div>
+      <a href="dashboard.html" class="sidebar-link"><span class="s-icon">📊</span> Dashboard</a>
+      <a href="../index.html" class="sidebar-link" target="_blank"><span class="s-icon">🌐</span> View Website</a>
+      <div class="sidebar-section-label">Content</div>
+      <a href="attractions.html" class="sidebar-link"><span class="s-icon">🗺️</span> Attractions</a>
+      <a href="tours.html" class="sidebar-link active"><span class="s-icon">🧳</span> Tour Packages</a>
+      <a href="testimonials.html" class="sidebar-link"><span class="s-icon">💬</span> Testimonials</a>
+      <div class="sidebar-section-label">Customise</div>
+      <a href="hero.html" class="sidebar-link"><span class="s-icon">🖼️</span> Hero Banner</a>
+      <a href="settings.html" class="sidebar-link"><span class="s-icon">⚙️</span> Site Settings</a>
+    </nav>
+    <div class="sidebar-footer">
+      <div class="sidebar-user">
+        <div class="sidebar-user-avatar">A</div>
+        <div>
+          <div class="sidebar-user-name">Administrator</div>
+          <div class="sidebar-user-role">Super Admin</div>
+        </div>
+      </div>
+      <button class="sidebar-logout" onclick="adminLogout()">🚪 Logout</button>
+    </div>
+  </aside>
+  <div id="sidebar-overlay" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:99;" onclick="document.getElementById('sidebar').classList.remove('open');this.style.display='none';"></div>
+
+  <!-- Main -->
+  <main class="admin-main">
+    <div class="admin-topbar">
+      <div>
+        <div class="topbar-title">Tour Packages</div>
+        <div class="topbar-subtitle">Manage all tour packages displayed on the website</div>
+      </div>
+      <div class="topbar-right">
+        <button class="btn-admin btn-admin-primary" id="add-tour-btn">+ Add Tour Package</button>
+        <button class="hamburger-btn" id="sidebar-toggle">☰</button>
+      </div>
+    </div>
+    <div class="admin-content">
+      <div class="panel">
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Image</th>
+                <th>Package Name</th>
+                <th>Duration</th>
+                <th>Price</th>
+                <th>Status</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="tours-tbody"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<!-- Add/Edit Tour Modal -->
+<div class="admin-modal-overlay" id="tour-modal">
+  <div class="admin-modal admin-modal-lg">
+    <div class="admin-modal-header">
+      <div class="admin-modal-title" id="tour-modal-title">Add Tour Package</div>
+      <button class="admin-modal-close" onclick="closeModal('tour-modal')">✕</button>
+    </div>
+    <div class="admin-modal-body">
+      <form id="tour-form">
+        <div class="form-grid">
+          <div class="form-group form-full">
+            <label class="form-label">Package Name <span class="required">*</span></label>
+            <input type="text" id="tour-name" class="form-input" placeholder="e.g. Shillong City Highlights" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Category</label>
+            <input type="text" id="tour-category" class="form-input" placeholder="e.g. Nature, Adventure, Sightseeing">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Duration</label>
+            <input type="text" id="tour-duration" class="form-input" placeholder="e.g. 1 Day, 2 Days, Half Day">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Group Size</label>
+            <input type="text" id="tour-group-size" class="form-input" placeholder="e.g. 2–15 people">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Price (₹) <span class="required">*</span></label>
+            <input type="number" id="tour-price" class="form-input" placeholder="1999" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Original Price (₹) <span style="font-size:0.72rem;color:var(--text-muted);">(for strikethrough)</span></label>
+            <input type="number" id="tour-original-price" class="form-input" placeholder="2499">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Rating (0–5)</label>
+            <input type="number" id="tour-rating" class="form-input" step="0.1" min="0" max="5" placeholder="4.5">
+          </div>
+          <div class="form-group form-full">
+            <label class="form-label">Description</label>
+            <textarea id="tour-description" class="form-textarea" placeholder="Describe this tour package..."></textarea>
+          </div>
+          <div class="form-group form-full">
+            <label class="form-label">Highlights <span style="font-size:0.72rem;color:var(--text-muted);">(comma-separated)</span></label>
+            <input type="text" id="tour-highlights" class="form-input" placeholder="Elephant Falls, Shillong Peak, Don Bosco Museum">
+            <div class="form-hint">Enter attractions separated by commas. These appear as tags on the card.</div>
+          </div>
+          <div class="form-group form-full">
+            <label class="form-label">What's Included <span style="font-size:0.72rem;color:var(--text-muted);">(comma-separated)</span></label>
+            <input type="text" id="tour-includes" class="form-input" placeholder="AC Vehicle, Guide, Entry Tickets, Breakfast">
+          </div>
+          <div class="form-group form-full">
+            <label class="form-label">Image URL or Path</label>
+            <input type="text" id="tour-image" class="form-input" placeholder="assets/images/tour.png or https://...">
+            <div class="image-preview" id="tour-image-preview">
+              <div class="placeholder">Image preview will appear here</div>
+            </div>
+          </div>
+          <div class="form-group form-full">
+            <div class="checkbox-group">
+              <input type="checkbox" id="tour-featured">
+              <label for="tour-featured">⭐ Mark as Featured (shown on homepage)</label>
+            </div>
+          </div>
+        </div>
+        <div style="display:none;"><button type="submit" id="tour-submit"></button></div>
+      </form>
+    </div>
+    <div class="admin-modal-footer">
+      <button class="btn-admin btn-admin-ghost" onclick="closeModal('tour-modal')">Cancel</button>
+      <button class="btn-admin btn-admin-primary" onclick="document.getElementById('tour-form').requestSubmit()">Save Package</button>
+    </div>
+  </div>
+</div>
+
+<!-- Confirm Delete Modal -->
+<div class="admin-modal-overlay" id="confirm-delete-modal">
+  <div class="admin-modal admin-modal-sm">
+    <div class="admin-modal-header">
+      <div class="admin-modal-title" style="color:var(--danger);">⚠️ Confirm Delete</div>
+      <button class="admin-modal-close" onclick="closeModal('confirm-delete-modal')">✕</button>
+    </div>
+    <div class="admin-modal-body" style="text-align:center;padding:28px;">
+      <div style="font-size:3rem;margin-bottom:12px;">🗑️</div>
+      <p class="confirm-text">Are you sure you want to delete:</p>
+      <p class="confirm-name" id="delete-item-name"></p>
+      <p style="font-size:0.8rem;color:var(--text-muted);">This action cannot be undone.</p>
+    </div>
+    <div class="admin-modal-footer">
+      <button class="btn-admin btn-admin-ghost" onclick="closeModal('confirm-delete-modal')">Cancel</button>
+      <button class="btn-admin btn-admin-danger" id="confirm-delete-btn">Yes, Delete</button>
+    </div>
+  </div>
+</div>
+
+<script src="../js/data.js"></script>
+<script src="../js/auth.js"></script>
+<script src="../js/admin.js"></script>
+<script>
+  initToursAdmin();
+  document.getElementById('sidebar-toggle')?.addEventListener('click', () => {
+    document.getElementById('sidebar').classList.toggle('open');
+    const overlay = document.getElementById('sidebar-overlay');
+    overlay.style.display = overlay.style.display === 'none' ? 'block' : 'none';
+  });
+  document.querySelectorAll('.admin-modal-overlay').forEach(o => {
+    o.addEventListener('click', e => { if (e.target === o) closeAllModals(); });
+  });
+</script>
+</body>
+</html>

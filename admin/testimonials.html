@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Testimonials — Admin</title>
+  <link rel="stylesheet" href="../css/admin.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚙️</text></svg>">
+</head>
+<body>
+<div class="admin-layout">
+  <!-- Sidebar -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-logo">
+      <div class="sidebar-logo-icon">🏔️</div>
+      <div>
+        <div class="sidebar-logo-text">Shillong Explorer</div>
+        <div class="sidebar-logo-sub">Admin Panel</div>
+      </div>
+    </div>
+    <nav class="sidebar-nav">
+      <div class="sidebar-section-label">Main</div>
+      <a href="dashboard.html" class="sidebar-link"><span class="s-icon">📊</span> Dashboard</a>
+      <a href="../index.html" class="sidebar-link" target="_blank"><span class="s-icon">🌐</span> View Website</a>
+      <div class="sidebar-section-label">Content</div>
+      <a href="attractions.html" class="sidebar-link"><span class="s-icon">🗺️</span> Attractions</a>
+      <a href="tours.html" class="sidebar-link"><span class="s-icon">🧳</span> Tour Packages</a>
+      <a href="testimonials.html" class="sidebar-link active"><span class="s-icon">💬</span> Testimonials</a>
+      <div class="sidebar-section-label">Customise</div>
+      <a href="hero.html" class="sidebar-link"><span class="s-icon">🖼️</span> Hero Banner</a>
+      <a href="settings.html" class="sidebar-link"><span class="s-icon">⚙️</span> Site Settings</a>
+    </nav>
+    <div class="sidebar-footer">
+      <div class="sidebar-user">
+        <div class="sidebar-user-avatar">A</div>
+        <div>
+          <div class="sidebar-user-name">Administrator</div>
+          <div class="sidebar-user-role">Super Admin</div>
+        </div>
+      </div>
+      <button class="sidebar-logout" onclick="adminLogout()">🚪 Logout</button>
+    </div>
+  </aside>
+  <div id="sidebar-overlay" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:99;" onclick="document.getElementById('sidebar').classList.remove('open');this.style.display='none';"></div>
+
+  <!-- Main -->
+  <main class="admin-main">
+    <div class="admin-topbar">
+      <div>
+        <div class="topbar-title">Testimonials</div>
+        <div class="topbar-subtitle">Manage customer reviews shown on the homepage</div>
+      </div>
+      <div class="topbar-right">
+        <button class="btn-admin btn-admin-primary" id="add-testimonial-btn">+ Add Testimonial</button>
+        <button class="hamburger-btn" id="sidebar-toggle">☰</button>
+      </div>
+    </div>
+    <div class="admin-content">
+      <div class="panel">
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Reviewer</th>
+                <th>Rating</th>
+                <th>Review</th>
+                <th>Date</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="testimonials-tbody"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<!-- Add/Edit Testimonial Modal -->
+<div class="admin-modal-overlay" id="testimonial-modal">
+  <div class="admin-modal admin-modal-md">
+    <div class="admin-modal-header">
+      <div class="admin-modal-title" id="testimonial-modal-title">Add Testimonial</div>
+      <button class="admin-modal-close" onclick="closeModal('testimonial-modal')">✕</button>
+    </div>
+    <div class="admin-modal-body">
+      <form id="testimonial-form">
+        <div class="form-grid">
+          <div class="form-group">
+            <label class="form-label">Reviewer Name <span class="required">*</span></label>
+            <input type="text" id="t-name" class="form-input" placeholder="e.g. Priya Sharma" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Location</label>
+            <input type="text" id="t-location" class="form-input" placeholder="e.g. Delhi">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Avatar Initials <span style="font-size:0.72rem;color:var(--text-muted);">(2 letters)</span></label>
+            <input type="text" id="t-avatar" class="form-input" placeholder="PS" maxlength="2">
+            <div class="form-hint">2-letter initials shown as avatar (e.g. PS for Priya Sharma)</div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Rating (1–5) <span class="required">*</span></label>
+            <select id="t-rating" class="form-select" required>
+              <option value="5">⭐⭐⭐⭐⭐ (5 stars)</option>
+              <option value="4">⭐⭐⭐⭐ (4 stars)</option>
+              <option value="3">⭐⭐⭐ (3 stars)</option>
+              <option value="2">⭐⭐ (2 stars)</option>
+              <option value="1">⭐ (1 star)</option>
+            </select>
+          </div>
+          <div class="form-group form-full">
+            <label class="form-label">Review Text <span class="required">*</span></label>
+            <textarea id="t-text" class="form-textarea" placeholder="Write the customer review here..." required></textarea>
+          </div>
+          <div class="form-group form-full">
+            <label class="form-label">Date</label>
+            <input type="text" id="t-date" class="form-input" placeholder="e.g. March 2025">
+          </div>
+        </div>
+        <div style="display:none;"><button type="submit"></button></div>
+      </form>
+    </div>
+    <div class="admin-modal-footer">
+      <button class="btn-admin btn-admin-ghost" onclick="closeModal('testimonial-modal')">Cancel</button>
+      <button class="btn-admin btn-admin-primary" onclick="document.getElementById('testimonial-form').requestSubmit()">Save Testimonial</button>
+    </div>
+  </div>
+</div>
+
+<!-- Confirm Delete Modal -->
+<div class="admin-modal-overlay" id="confirm-delete-modal">
+  <div class="admin-modal admin-modal-sm">
+    <div class="admin-modal-header">
+      <div class="admin-modal-title" style="color:var(--danger);">⚠️ Confirm Delete</div>
+      <button class="admin-modal-close" onclick="closeModal('confirm-delete-modal')">✕</button>
+    </div>
+    <div class="admin-modal-body" style="text-align:center;padding:28px;">
+      <div style="font-size:3rem;margin-bottom:12px;">🗑️</div>
+      <p class="confirm-text">Delete testimonial from:</p>
+      <p class="confirm-name" id="delete-item-name"></p>
+    </div>
+    <div class="admin-modal-footer">
+      <button class="btn-admin btn-admin-ghost" onclick="closeModal('confirm-delete-modal')">Cancel</button>
+      <button class="btn-admin btn-admin-danger" id="confirm-delete-btn">Yes, Delete</button>
+    </div>
+  </div>
+</div>
+
+<script src="../js/data.js"></script>
+<script src="../js/auth.js"></script>
+<script src="../js/admin.js"></script>
+<script>
+  initTestimonialsAdmin();
+  document.getElementById('sidebar-toggle')?.addEventListener('click', () => {
+    document.getElementById('sidebar').classList.toggle('open');
+    const overlay = document.getElementById('sidebar-overlay');
+    overlay.style.display = overlay.style.display === 'none' ? 'block' : 'none';
+  });
+  document.querySelectorAll('.admin-modal-overlay').forEach(o => {
+    o.addEventListener('click', e => { if (e.target === o) closeAllModals(); });
+  });
+</script>
+</body>
+</html>

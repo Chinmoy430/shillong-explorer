@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Site Settings — Admin</title>
+  <link rel="stylesheet" href="../css/admin.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚙️</text></svg>">
+</head>
+<body>
+<div class="admin-layout">
+  <!-- Sidebar -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-logo">
+      <div class="sidebar-logo-icon">🏔️</div>
+      <div>
+        <div class="sidebar-logo-text">Shillong Explorer</div>
+        <div class="sidebar-logo-sub">Admin Panel</div>
+      </div>
+    </div>
+    <nav class="sidebar-nav">
+      <div class="sidebar-section-label">Main</div>
+      <a href="dashboard.html" class="sidebar-link"><span class="s-icon">📊</span> Dashboard</a>
+      <a href="../index.html" class="sidebar-link" target="_blank"><span class="s-icon">🌐</span> View Website</a>
+      <div class="sidebar-section-label">Content</div>
+      <a href="attractions.html" class="sidebar-link"><span class="s-icon">🗺️</span> Attractions</a>
+      <a href="tours.html" class="sidebar-link"><span class="s-icon">🧳</span> Tour Packages</a>
+      <a href="testimonials.html" class="sidebar-link"><span class="s-icon">💬</span> Testimonials</a>
+      <div class="sidebar-section-label">Customise</div>
+      <a href="hero.html" class="sidebar-link"><span class="s-icon">🖼️</span> Hero Banner</a>
+      <a href="settings.html" class="sidebar-link active"><span class="s-icon">⚙️</span> Site Settings</a>
+    </nav>
+    <div class="sidebar-footer">
+      <div class="sidebar-user">
+        <div class="sidebar-user-avatar">A</div>
+        <div>
+          <div class="sidebar-user-name">Administrator</div>
+          <div class="sidebar-user-role">Super Admin</div>
+        </div>
+      </div>
+      <button class="sidebar-logout" onclick="adminLogout()">🚪 Logout</button>
+    </div>
+  </aside>
+  <div id="sidebar-overlay" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:99;" onclick="document.getElementById('sidebar').classList.remove('open');this.style.display='none';"></div>
+
+  <!-- Main -->
+  <main class="admin-main">
+    <div class="admin-topbar">
+      <div>
+        <div class="topbar-title">Site Settings</div>
+        <div class="topbar-subtitle">Configure agency info, contact details, and social media links</div>
+      </div>
+      <div class="topbar-right">
+        <button class="hamburger-btn" id="sidebar-toggle">☰</button>
+      </div>
+    </div>
+
+    <div class="admin-content">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:start;">
+
+        <!-- Agency Settings -->
+        <div class="panel">
+          <div class="panel-header">
+            <div class="panel-title">🏢 Agency Information</div>
+          </div>
+          <div class="panel-body">
+            <form id="settings-form">
+              <div class="settings-section">
+                <div class="settings-section-title">Basic Info</div>
+                <div class="form-group" style="margin-bottom:16px;">
+                  <label class="form-label">Agency Name</label>
+                  <input type="text" id="s-agency-name" class="form-input" placeholder="Shillong Explorer">
+                  <div class="form-hint">Appears in the website header and footer.</div>
+                </div>
+                <div class="form-group" style="margin-bottom:16px;">
+                  <label class="form-label">Tagline</label>
+                  <input type="text" id="s-tagline" class="form-input" placeholder="Discover the Scotland of the East">
+                </div>
+              </div>
+
+              <div class="settings-section">
+                <div class="settings-section-title">Contact Details</div>
+                <div class="form-group" style="margin-bottom:16px;">
+                  <label class="form-label">Phone Number</label>
+                  <input type="text" id="s-phone" class="form-input" placeholder="+91 98765 43210">
+                </div>
+                <div class="form-group" style="margin-bottom:16px;">
+                  <label class="form-label">Email Address</label>
+                  <input type="email" id="s-email" class="form-input" placeholder="hello@shillongexplorer.com">
+                </div>
+                <div class="form-group" style="margin-bottom:16px;">
+                  <label class="form-label">WhatsApp Number <span style="font-size:0.72rem;color:var(--text-muted);">(with country code, no spaces)</span></label>
+                  <input type="text" id="s-whatsapp" class="form-input" placeholder="919876543210">
+                  <div class="form-hint">Example: 919876543210 (91 = India country code)</div>
+                </div>
+                <div class="form-group" style="margin-bottom:16px;">
+                  <label class="form-label">Office Address</label>
+                  <input type="text" id="s-address" class="form-input" placeholder="Police Bazar, Shillong, Meghalaya 793001">
+                </div>
+              </div>
+
+              <div class="settings-section">
+                <div class="settings-section-title">Social Media Links</div>
+                <div class="form-group" style="margin-bottom:16px;">
+                  <label class="form-label">Facebook URL</label>
+                  <input type="url" id="s-facebook" class="form-input" placeholder="https://facebook.com/yourpage">
+                </div>
+                <div class="form-group" style="margin-bottom:16px;">
+                  <label class="form-label">Instagram URL</label>
+                  <input type="url" id="s-instagram" class="form-input" placeholder="https://instagram.com/yourhandle">
+                </div>
+                <div class="form-group" style="margin-bottom:16px;">
+                  <label class="form-label">YouTube URL</label>
+                  <input type="url" id="s-youtube" class="form-input" placeholder="https://youtube.com/@yourchannel">
+                </div>
+                <div class="form-group" style="margin-bottom:16px;">
+                  <label class="form-label">Twitter / X URL</label>
+                  <input type="url" id="s-twitter" class="form-input" placeholder="https://twitter.com/yourhandle">
+                </div>
+              </div>
+
+              <button type="submit" class="btn-admin btn-admin-primary" style="width:100%;">💾 Save Settings</button>
+            </form>
+          </div>
+        </div>
+
+        <!-- Security & Reset -->
+        <div>
+          <!-- Change Password -->
+          <div class="panel" style="margin-bottom:24px;">
+            <div class="panel-header">
+              <div class="panel-title">🔐 Change Password</div>
+            </div>
+            <div class="panel-body">
+              <form id="password-form">
+                <div class="form-group" style="margin-bottom:16px;">
+                  <label class="form-label">Current Password</label>
+                  <input type="password" id="current-password" class="form-input" placeholder="Enter current password" required>
+                </div>
+                <div class="form-group" style="margin-bottom:16px;">
+                  <label class="form-label">New Password</label>
+                  <input type="password" id="new-password" class="form-input" placeholder="Min 6 characters" required>
+                </div>
+                <div class="form-group" style="margin-bottom:20px;">
+                  <label class="form-label">Confirm New Password</label>
+                  <input type="password" id="confirm-password" class="form-input" placeholder="Repeat new password" required>
+                </div>
+                <button type="submit" class="btn-admin btn-admin-primary" style="width:100%;">🔑 Update Password</button>
+              </form>
+            </div>
+          </div>
+
+          <!-- Data Reset -->
+          <div class="panel">
+            <div class="panel-header">
+              <div class="panel-title" style="color:var(--danger);">⚠️ Danger Zone</div>
+            </div>
+            <div class="panel-body">
+              <p style="font-size:0.875rem;color:var(--text-light);margin-bottom:16px;">
+                This will reset <strong>all website content</strong> (attractions, tours, testimonials, settings) back to the original defaults. <strong>This cannot be undone.</strong>
+              </p>
+              <button class="btn-admin btn-admin-danger" id="reset-data-btn" style="width:100%;">
+                🔄 Reset All Data to Defaults
+              </button>
+            </div>
+          </div>
+
+          <!-- Info Card -->
+          <div class="alert alert-info" style="margin-top:24px;">
+            <span>ℹ️</span>
+            <div>
+              <strong>How settings work:</strong><br>
+              All changes are saved in your browser's local storage. The website reads from this storage every time it loads. If you clear browser data, changes may be lost — in that case, simply re-enter the settings here.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<script src="../js/data.js"></script>
+<script src="../js/auth.js"></script>
+<script src="../js/admin.js"></script>
+<script>
+  initSettings();
+  document.getElementById('sidebar-toggle')?.addEventListener('click', () => {
+    document.getElementById('sidebar').classList.toggle('open');
+    const overlay = document.getElementById('sidebar-overlay');
+    overlay.style.display = overlay.style.display === 'none' ? 'block' : 'none';
+  });
+</script>
+</body>
+</html>

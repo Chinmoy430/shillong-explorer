@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tour Packages — Shillong Explorer</title>
+  <meta name="description" content="Book guided tour packages to Shillong, Cherrapunji, Dawki, Living Root Bridges and more. Best prices guaranteed.">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏔️</text></svg>">
+</head>
+<body id="tours-page">
+
+<!-- Mobile Menu -->
+<nav class="mobile-menu" id="mobile-menu">
+  <span class="mobile-menu-close" id="mobile-menu-close">✕</span>
+  <a href="index.html">🏠 Home</a>
+  <a href="attractions.html">🗺️ Attractions</a>
+  <a href="tours.html">🧳 Tour Packages</a>
+  <a href="contact.html">📞 Contact</a>
+  <a href="auth.html">👤 Sign In / My Account</a>
+</nav>
+
+<!-- Header -->
+<header class="header scrolled" id="header">
+  <nav class="nav">
+    <a href="index.html" class="logo">
+      <div class="logo-icon">🏔️</div>
+      <span class="site-name">Shillong Explorer</span>
+    </a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="attractions.html">Attractions</a>
+      <a href="tours.html" class="active">Tour Packages</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <div class="nav-cta">
+      <a href="contact.html" class="nav-book-btn">Book a Tour</a>
+      <div class="nav-user-area" id="nav-user-area"></div>
+      <button class="hamburger" id="hamburger" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+</header>
+
+<!-- Page Hero -->
+<section class="page-hero">
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="index.html">Home</a> › <span>Tour Packages</span>
+    </div>
+    <h1>Tour Packages</h1>
+    <p>Explore Shillong & Meghalaya with our expertly curated packages</p>
+  </div>
+</section>
+
+<!-- Filters & Tours -->
+<section class="section-pad" style="padding-top:40px;">
+  <div class="container">
+
+    <!-- Filter Bar -->
+    <div class="filters-bar" style="background:white;padding:16px 20px;border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,0.06);margin-bottom:28px;flex-wrap:wrap;">
+      <span class="filter-label">🔽 Filter:</span>
+      <select id="duration-filter" style="padding:8px 14px;border:1.5px solid #e2e8e4;border-radius:8px;font-size:0.85rem;outline:none;font-family:inherit;color:#1a2e1f;background:white;">
+        <option value="">All Durations</option>
+        <option value="Half Day">Half Day</option>
+        <option value="1 Day">1 Day</option>
+        <option value="2 Days">2 Days</option>
+        <option value="5 Days">5 Days</option>
+      </select>
+      <select id="category-filter" style="padding:8px 14px;border:1.5px solid #e2e8e4;border-radius:8px;font-size:0.85rem;outline:none;font-family:inherit;color:#1a2e1f;background:white;">
+        <option value="">All Categories</option>
+        <option value="Sightseeing">Sightseeing</option>
+        <option value="Nature">Nature</option>
+        <option value="Adventure">Adventure</option>
+      </select>
+      <select id="sort-filter" style="padding:8px 14px;border:1.5px solid #e2e8e4;border-radius:8px;font-size:0.85rem;outline:none;font-family:inherit;color:#1a2e1f;background:white;">
+        <option value="">Sort By</option>
+        <option value="price-asc">Price: Low to High</option>
+        <option value="price-desc">Price: High to Low</option>
+        <option value="rating">Top Rated</option>
+      </select>
+      <span class="results-count" id="tours-count" style="margin-left:auto;"></span>
+    </div>
+
+    <!-- Tours Grid -->
+    <div class="tours-grid" id="all-tours-grid" style="margin-top:0;">
+      <!-- Rendered by JS -->
+    </div>
+  </div>
+</section>
+
+<!-- Custom Tour CTA -->
+<section style="background:var(--dark);padding:60px 0;text-align:center;position:relative;overflow:hidden;">
+  <div style="position:absolute;top:-100px;right:-100px;width:300px;height:300px;background:radial-gradient(circle,rgba(26,107,60,0.2),transparent);border-radius:50%;"></div>
+  <div class="container" style="position:relative;z-index:1;">
+    <div class="section-label" style="color:var(--accent);justify-content:center;">Not finding what you need?</div>
+    <h2 style="font-family:'Playfair Display',serif;color:white;font-size:2rem;margin-bottom:12px;">Build Your <span style="color:var(--accent);">Custom Tour</span></h2>
+    <p style="color:rgba(255,255,255,0.6);max-width:500px;margin:0 auto 28px;">Tell us your dream trip and we'll create a personalized itinerary just for you. Any dates, any group size!</p>
+    <a href="contact.html" class="btn btn-accent">Get a Custom Quote →</a>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="logo"><div class="logo-icon">🏔️</div><span class="site-name">Shillong Explorer</span></a>
+        <p>Your trusted travel partner for exploring Shillong and Meghalaya.</p>
+        <div class="footer-socials">
+          <a href="#" class="social-link social-fb" target="_blank" aria-label="Facebook">f</a>
+          <a href="#" class="social-link social-ig" target="_blank" aria-label="Instagram">📷</a>
+          <a href="#" class="social-link social-yt" target="_blank" aria-label="YouTube">▶</a>
+        </div>
+      </div>
+      <div>
+        <h4 class="footer-heading">Packages</h4>
+        <ul class="footer-links">
+          <li><a href="tours.html">Day Trips</a></li>
+          <li><a href="tours.html">Multi-Day Tours</a></li>
+          <li><a href="tours.html">Adventure Packages</a></li>
+          <li><a href="contact.html">Custom Tours</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="footer-heading">Contact</h4>
+        <div class="footer-contact-item"><span class="icon">📞</span><span class="site-phone">+91 98765 43210</span></div>
+        <div class="footer-contact-item"><span class="icon">✉️</span><span class="site-email">hello@shillongexplorer.com</span></div>
+        <div class="footer-contact-item"><span class="icon">📍</span><span class="site-address">Police Bazar, Shillong</span></div>
+      </div>
+      <div>
+        <h4 class="footer-heading">Quick Links</h4>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="attractions.html">Attractions</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="admin/index.html">Admin Panel</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 <span class="site-name">Shillong Explorer</span>. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- Firebase SDKs (compat) -->
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+<script src="js/firebase-config.js"></script>
+<script src="js/user-auth.js"></script>
+<script src="js/data.js"></script>
+<script src="js/main.js"></script>
+<script>
+  document.getElementById('hamburger')?.addEventListener('click', () => document.getElementById('mobile-menu').classList.add('open'));
+  document.getElementById('mobile-menu-close')?.addEventListener('click', () => document.getElementById('mobile-menu').classList.remove('open'));
+</script>
+</body>
+</html>

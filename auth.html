@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign In — Shillong Explorer</title>
+  <meta name="description" content="Sign in or create your Shillong Explorer account to manage bookings, save favourite tours and more.">
+  <link rel="stylesheet" href="css/auth.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏔️</text></svg>">
+</head>
+<body>
+
+<!-- Loading Overlay -->
+<div class="auth-loading-overlay" id="auth-loading-overlay">
+  <div class="auth-loading-spinner"></div>
+</div>
+
+<!-- Auth Layout -->
+<div class="auth-page">
+
+  <!-- ======= LEFT — Hero Panel ======= -->
+  <div class="auth-hero">
+    <div class="auth-hero-bg"></div>
+    <div class="auth-hero-content">
+
+      <a href="index.html" class="auth-logo" id="hero-logo">
+        <div class="auth-logo-icon">🏔️</div>
+        <span class="auth-logo-text">Shillong Explorer</span>
+      </a>
+
+      <div class="auth-hero-tagline">Your Gateway to Meghalaya</div>
+      <h1>Discover the <span>Scotland</span> of the East</h1>
+      <p class="auth-hero-desc">
+        Create your account and unlock exclusive tour deals, personalised itineraries, and 24/7 travel support across Shillong, Cherrapunji, and beyond.
+      </p>
+
+      <div class="auth-feature-cards">
+        <div class="auth-feature-card">
+          <div class="auth-feature-icon">🗺️</div>
+          <div class="auth-feature-text">
+            <div class="auth-feature-title">50+ Curated Tours</div>
+            <div class="auth-feature-sub">Handpicked by local experts</div>
+          </div>
+        </div>
+        <div class="auth-feature-card">
+          <div class="auth-feature-icon">💰</div>
+          <div class="auth-feature-text">
+            <div class="auth-feature-title">Members-Only Deals</div>
+            <div class="auth-feature-sub">Up to 20% off for registered users</div>
+          </div>
+        </div>
+        <div class="auth-feature-card">
+          <div class="auth-feature-icon">📱</div>
+          <div class="auth-feature-text">
+            <div class="auth-feature-title">24/7 Travel Support</div>
+            <div class="auth-feature-sub">We're always just a message away</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ======= RIGHT — Form Panel ======= -->
+  <div class="auth-form-panel">
+    <div class="auth-form-container">
+
+      <!-- Back to site link -->
+      <a href="index.html" class="auth-back-link">← Back to Shillong Explorer</a>
+
+      <!-- Alert Box -->
+      <div class="auth-alert" id="auth-alert" style="display:none;"></div>
+
+      <!-- ======= SUCCESS SCREEN ======= -->
+      <div class="auth-success-screen" id="auth-success-screen">
+        <div class="success-checkmark">🎉</div>
+        <h2 class="success-title">Welcome Aboard!</h2>
+        <p class="success-msg" id="success-msg">Your account has been created. We've sent a welcome email. Redirecting you now…</p>
+        <div class="auth-loading-spinner" style="margin:0 auto;border-top-color:var(--primary);border-color:var(--gray-light);width:32px;height:32px;"></div>
+      </div>
+
+      <!-- ======= MAIN AUTH FORMS ======= -->
+      <div id="auth-main-content">
+
+        <div class="auth-form-header">
+          <div class="auth-greeting" id="auth-greeting">Welcome Back</div>
+          <h1 class="auth-title" id="auth-title">Sign In to Your Account</h1>
+          <p class="auth-subtitle" id="auth-subtitle">Access your bookings, saved tours and travel history.</p>
+        </div>
+
+        <!-- Tabs -->
+        <div class="auth-tabs" role="tablist">
+          <button class="auth-tab active" id="tab-signin" role="tab" aria-selected="true" onclick="switchTab('signin')">Sign In</button>
+          <button class="auth-tab" id="tab-register" role="tab" aria-selected="false" onclick="switchTab('register')">Create Account</button>
+        </div>
+
+        <!-- ========== SIGN IN SECTION ========== -->
+        <div class="form-section active" id="section-signin">
+
+          <!-- Google Sign In -->
+          <button class="btn-google" id="btn-google-signin" onclick="signInWithGoogle()">
+            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M47.532 24.552c0-1.636-.147-3.209-.420-4.727H24.48v8.945h12.968c-.560 3.010-2.256 5.562-4.806 7.273v6.044h7.776c4.552-4.192 7.114-10.367 7.114-17.535z" fill="#4285F4"/>
+              <path d="M24.48 48c6.48 0 11.916-2.149 15.888-5.814l-7.776-6.044c-2.153 1.44-4.907 2.29-8.112 2.29-6.24 0-11.532-4.214-13.428-9.876H2.936v6.245C6.892 42.813 15.12 48 24.48 48z" fill="#34A853"/>
+              <path d="M11.052 28.556A14.37 14.37 0 0 1 10.32 24c0-1.585.272-3.126.732-4.556V13.2H2.936A23.936 23.936 0 0 0 .48 24c0 3.867.924 7.525 2.456 10.8l8.116-6.244z" fill="#FBBC05"/>
+              <path d="M24.48 9.568c3.516 0 6.672 1.209 9.156 3.579l6.864-6.864C36.384 2.378 30.948 0 24.48 0 15.12 0 6.892 5.187 2.936 13.2l8.116 6.244c1.896-5.662 7.188-9.876 13.428-9.876z" fill="#EA4335"/>
+            </svg>
+            Continue with Google
+          </button>
+
+          <div class="auth-divider"><span>or sign in with email</span></div>
+
+          <!-- Email/Password signin -->
+          <form id="email-signin-form" onsubmit="handleEmailSignIn(event)">
+            <div class="form-group">
+              <label class="form-label" for="signin-email">Email Address <span>*</span></label>
+              <div class="input-wrapper">
+                <span class="input-icon">✉️</span>
+                <input type="email" class="form-input" id="signin-email" placeholder="you@example.com"
+                  autocomplete="email" required oninput="validateSigninEmail(this)">
+                <span class="input-action" id="signin-email-status" style="pointer-events:none;"></span>
+              </div>
+              <div class="field-feedback hidden" id="signin-email-feedback"></div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="signin-password">Password <span>*</span></label>
+              <div class="input-wrapper">
+                <span class="input-icon">🔒</span>
+                <input type="password" class="form-input" id="signin-password" placeholder="Enter your password"
+                  autocomplete="current-password" required>
+                <button type="button" class="input-action" id="toggle-signin-pass" onclick="togglePassword('signin-password','toggle-signin-pass')" aria-label="Show/hide password">👁</button>
+              </div>
+              <div class="field-feedback hidden" id="signin-password-feedback"></div>
+            </div>
+
+            <div style="text-align:right;margin-bottom:20px;">
+              <button type="button" onclick="handleForgotPassword()" style="font-size:0.83rem;color:var(--primary);font-weight:600;background:none;border:none;cursor:pointer;font-family:inherit;transition:all 0.2s;">Forgot Password?</button>
+            </div>
+
+            <button type="submit" class="btn-auth" id="btn-email-signin">
+              <div class="btn-spinner"></div>
+              <span class="btn-text">Sign In →</span>
+            </button>
+          </form>
+
+          <div class="auth-switch">
+            New here? <button class="auth-switch-btn" onclick="switchTab('register')">Create a free account</button>
+          </div>
+
+        </div>
+        <!-- END #section-signin -->
+
+        <!-- ========== REGISTER SECTION ========== -->
+        <div class="form-section" id="section-register">
+
+          <!-- Google Sign Up -->
+          <button class="btn-google" id="btn-google-signup" onclick="signInWithGoogle()">
+            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M47.532 24.552c0-1.636-.147-3.209-.420-4.727H24.48v8.945h12.968c-.560 3.010-2.256 5.562-4.806 7.273v6.044h7.776c4.552-4.192 7.114-10.367 7.114-17.535z" fill="#4285F4"/>
+              <path d="M24.48 48c6.48 0 11.916-2.149 15.888-5.814l-7.776-6.044c-2.153 1.44-4.907 2.29-8.112 2.29-6.24 0-11.532-4.214-13.428-9.876H2.936v6.245C6.892 42.813 15.12 48 24.48 48z" fill="#34A853"/>
+              <path d="M11.052 28.556A14.37 14.37 0 0 1 10.32 24c0-1.585.272-3.126.732-4.556V13.2H2.936A23.936 23.936 0 0 0 .48 24c0 3.867.924 7.525 2.456 10.8l8.116-6.244z" fill="#FBBC05"/>
+              <path d="M24.48 9.568c3.516 0 6.672 1.209 9.156 3.579l6.864-6.864C36.384 2.378 30.948 0 24.48 0 15.12 0 6.892 5.187 2.936 13.2l8.116 6.244c1.896-5.662 7.188-9.876 13.428-9.876z" fill="#EA4335"/>
+            </svg>
+            Sign Up with Google
+          </button>
+
+          <div class="auth-divider"><span>or register with email</span></div>
+
+          <form id="register-form" onsubmit="handleRegister(event)" novalidate>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="reg-firstname">First Name <span>*</span></label>
+                <div class="input-wrapper">
+                  <span class="input-icon">👤</span>
+                  <input type="text" class="form-input" id="reg-firstname" placeholder="Arjun"
+                    autocomplete="given-name" required
+                    oninput="validateName(this,'reg-firstname-feedback')">
+                </div>
+                <div class="field-feedback hidden" id="reg-firstname-feedback"></div>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="reg-lastname">Last Name <span>*</span></label>
+                <div class="input-wrapper">
+                  <span class="input-icon">👤</span>
+                  <input type="text" class="form-input" id="reg-lastname" placeholder="Sharma"
+                    autocomplete="family-name" required
+                    oninput="validateName(this,'reg-lastname-feedback')">
+                </div>
+                <div class="field-feedback hidden" id="reg-lastname-feedback"></div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="reg-email">Email Address <span>*</span></label>
+              <div class="input-wrapper">
+                <span class="input-icon">✉️</span>
+                <input type="email" class="form-input" id="reg-email" placeholder="you@example.com"
+                  autocomplete="email" required
+                  oninput="validateRegEmail(this)">
+                <span class="input-action" id="reg-email-status" style="pointer-events:none;"></span>
+              </div>
+              <div class="field-feedback hidden" id="reg-email-feedback"></div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="reg-phone">Phone Number <span>*</span></label>
+              <div class="phone-input-group">
+                <select class="phone-country-code" id="reg-country-code">
+                  <option value="+91" selected>🇮🇳 +91</option>
+                  <option value="+1">🇺🇸 +1</option>
+                  <option value="+44">🇬🇧 +44</option>
+                  <option value="+971">🇦🇪 +971</option>
+                  <option value="+65">🇸🇬 +65</option>
+                  <option value="+61">🇦🇺 +61</option>
+                  <option value="+880">🇧🇩 +880</option>
+                  <option value="+94">🇱🇰 +94</option>
+                </select>
+                <div class="input-wrapper" style="flex:1;position:relative;">
+                  <input type="tel" class="phone-number-input" id="reg-phone"
+                    placeholder="98765 43210" maxlength="15"
+                    oninput="validatePhoneInput(this,'reg-phone-feedback')">
+                </div>
+              </div>
+              <div class="field-feedback hidden" id="reg-phone-feedback"></div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="reg-password">Password <span>*</span></label>
+              <div class="input-wrapper">
+                <span class="input-icon">🔒</span>
+                <input type="password" class="form-input" id="reg-password" placeholder="Min. 8 characters"
+                  autocomplete="new-password" required
+                  oninput="validatePassword(this)">
+                <button type="button" class="input-action" onclick="togglePassword('reg-password','toggle-reg-pass')" id="toggle-reg-pass" aria-label="Show/hide password">👁</button>
+              </div>
+              <div class="password-strength" id="password-strength-wrap" style="display:none;">
+                <div class="strength-bars">
+                  <div class="strength-bar" id="strength-bar-1"></div>
+                  <div class="strength-bar" id="strength-bar-2"></div>
+                  <div class="strength-bar" id="strength-bar-3"></div>
+                  <div class="strength-bar" id="strength-bar-4"></div>
+                </div>
+                <span class="strength-label" id="strength-label"></span>
+              </div>
+              <div class="field-feedback hidden" id="reg-password-feedback"></div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="reg-confirm-password">Confirm Password <span>*</span></label>
+              <div class="input-wrapper">
+                <span class="input-icon">🔒</span>
+                <input type="password" class="form-input" id="reg-confirm-password" placeholder="Repeat your password"
+                  autocomplete="new-password" required
+                  oninput="validateConfirmPassword(this)">
+                <button type="button" class="input-action" onclick="togglePassword('reg-confirm-password','toggle-confirm-pass')" id="toggle-confirm-pass" aria-label="Show/hide password">👁</button>
+              </div>
+              <div class="field-feedback hidden" id="reg-confirm-feedback"></div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-checkbox" for="reg-terms">
+                <input type="checkbox" id="reg-terms" required>
+                I agree to the <a href="#" tabindex="-1">Terms of Service</a> and <a href="#" tabindex="-1">Privacy Policy</a>
+              </label>
+            </div>
+
+            <button type="submit" class="btn-auth" id="btn-register">
+              <div class="btn-spinner"></div>
+              <span class="btn-text">Create My Account →</span>
+            </button>
+
+            <p class="auth-terms">
+              By creating an account you agree to receive travel updates and exclusive offers from Shillong Explorer. You can unsubscribe at any time.
+            </p>
+          </form>
+
+          <div class="auth-switch">
+            Already have an account? <button class="auth-switch-btn" onclick="switchTab('signin')">Sign In</button>
+          </div>
+
+        </div>
+        <!-- END #section-register -->
+
+      </div>
+      <!-- END #auth-main-content -->
+
+    </div>
+  </div>
+  <!-- END .auth-form-panel -->
+
+</div>
+<!-- END .auth-page -->
+
+<!-- Firebase SDKs (compat v9) -->
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+
+<!-- EmailJS CDN -->
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+<!-- Firebase Config -->
+<script src="js/firebase-config.js"></script>
+
+<!-- Auth Logic -->
+<script src="js/user-auth.js"></script>
+
+</body>
+</html>
