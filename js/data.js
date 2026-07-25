@@ -6,9 +6,9 @@
 
 const DEFAULT_DATA = {
   siteSettings: {
-    agencyName: "Shillong Explorer",
+    agencyName: "SAWAIOM TRAVELS AGENCY",
     tagline: "Discover the Scotland of the East",
-    logoText: "Shillong Explorer",
+    logoText: "SAWAIOM TRAVELS AGENCY",
     phone: "+91 98765 43210",
     email: "hello@shillongexplorer.com",
     whatsapp: "919876543210",
@@ -250,7 +250,7 @@ const DEFAULT_DATA = {
       name: "Ananya Roy",
       location: "Kolkata",
       rating: 5,
-      text: "The living root bridge trek was challenging but so worth it! Our guide kept us energized and the double-decker bridge is truly a wonder. Shillong Explorer made it seamless.",
+      text: "The living root bridge trek was challenging but so worth it! Our guide kept us energized and the double-decker bridge is truly a wonder. SAWAIOM TRAVELS AGENCY made it seamless.",
       avatar: "AR",
       date: "January 2025"
     },

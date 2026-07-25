@@ -487,9 +487,9 @@ async function sendWelcomeEmailViaEmailJS(toEmail, firstName) {
   const templateParams = {
     to_email: toEmail,
     to_name: firstName || 'Explorer',
-    from_name: 'Shillong Explorer',
+    from_name: 'SAWAIOM TRAVELS AGENCY',
     reply_to: 'hello@shillongexplorer.com',
-    message: `Welcome to Shillong Explorer! Your account has been created. Browse our tours at https://yourdomain.com/tours.html`
+    message: `Welcome to SAWAIOM TRAVELS AGENCY! Your account has been created. Browse our tours at https://yourdomain.com/tours.html`
   };
 
   try {

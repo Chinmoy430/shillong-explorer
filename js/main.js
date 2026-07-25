@@ -1,5 +1,5 @@
-// ============================================================
-// SHILLONG EXPLORER — Main Public Site JS
+﻿// ============================================================
+// SAWAIOM TRAVELS AGENCY — Main Public Site JS
 // ============================================================
 
 document.addEventListener('DOMContentLoaded', () => {

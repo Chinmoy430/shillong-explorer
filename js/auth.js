@@ -1,5 +1,5 @@
-// ============================================================
-// SHILLONG EXPLORER — Admin Authentication
+﻿// ============================================================
+// SAWAIOM TRAVELS AGENCY — Admin Authentication
 // ============================================================
 
 const AUTH_KEY = 'se_admin_session';
