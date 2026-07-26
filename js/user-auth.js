@@ -63,9 +63,19 @@ function getRedirectParam() {
 function normalizeRedirect(redirect) {
   if (!redirect || !redirect.trim()) return 'index.html';
   const cleaned = redirect.trim();
-  const redirectPath = cleaned.split(/[?#]/)[0].toLowerCase();
-  const blocked = ['auth.html', '/auth', '/auth/', '/auth.html'];
-  return blocked.includes(redirectPath) ? 'index.html' : cleaned;
+  const blockedPaths = ['/auth', '/auth/', '/auth.html', 'auth', 'auth.html'];
+
+  try {
+    const url = new URL(cleaned, window.location.origin);
+    const path = url.pathname.toLowerCase();
+    if (blockedPaths.some(blocked => path.endsWith(blocked))) return 'index.html';
+    const target = url.pathname + url.search + url.hash;
+    return target === '/' ? 'index.html' : target;
+  } catch (err) {
+    const path = cleaned.split(/[?#]/)[0].toLowerCase();
+    if (blockedPaths.some(blocked => path.endsWith(blocked))) return 'index.html';
+    return cleaned;
+  }
 }
 
 // ============================================================
