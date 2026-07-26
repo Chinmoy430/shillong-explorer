@@ -47,8 +47,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // Guard: skip if an action (signup/signin) is already handling the redirect
     auth.onAuthStateChanged((user) => {
       if (user && !authActionInProgress) {
-        const redirect = getRedirectParam() || 'index.html';
-        window.location.href = redirect;
+        authActionInProgress = true;
+        const redirect = getRedirectParam();
+        window.location.replace(redirect);
       }
     });
   }
@@ -56,7 +57,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
 function getRedirectParam() {
   const params = new URLSearchParams(window.location.search);
-  return params.get('redirect');
+  return normalizeRedirect(params.get('redirect'));
+}
+
+function normalizeRedirect(redirect) {
+  if (!redirect || !redirect.trim()) return 'index.html';
+  const cleaned = redirect.trim();
+  const redirectPath = cleaned.split(/[?#]/)[0].toLowerCase();
+  const blocked = ['auth.html', '/auth', '/auth/', '/auth.html'];
+  return blocked.includes(redirectPath) ? 'index.html' : cleaned;
 }
 
 // ============================================================
@@ -305,7 +314,10 @@ async function signInWithGoogle() {
     }
 
     showSuccess(`Welcome${isNewUser ? ', ' + (user.displayName || '') : ' back, ' + (user.displayName || '')}!`);
-    setTimeout(() => { window.location.href = getRedirectParam() || 'index.html'; }, 1800);
+    setTimeout(() => {
+      authActionInProgress = false;
+      window.location.replace(getRedirectParam());
+    }, 1800);
   } catch (err) {
     authActionInProgress = false;
     showPageLoader(false);
@@ -342,7 +354,10 @@ async function handleEmailSignIn(event) {
     // Sync last login to both Firestore + RTDB
     updateUserPresence(user.uid);
     showSuccess(`Welcome back, ${user.displayName || email.split('@')[0]}!`);
-    setTimeout(() => { window.location.href = getRedirectParam() || 'index.html'; }, 1600);
+    setTimeout(() => {
+      authActionInProgress = false;
+      window.location.replace(getRedirectParam());
+    }, 1600);
   } catch (err) {
     authActionInProgress = false;
     setLoading('btn-email-signin', false);
@@ -425,7 +440,10 @@ async function handleRegister(event) {
 
     // Show success screen, then redirect after a short delay
     showSuccess(`Welcome, ${firstName}! 🎉 A verification email has been sent to ${email}.`);
-    setTimeout(() => { window.location.href = 'index.html'; }, 2500);
+    setTimeout(() => {
+      authActionInProgress = false;
+      window.location.replace('index.html');
+    }, 2500);
 
   } catch (err) {
     authActionInProgress = false;
