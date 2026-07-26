@@ -23,6 +23,9 @@ const EMAILJS_TEMPLATE_ID = 'template_b06hmco';  // e.g. 'template_xxxxxxxx'
 
 // ---- State ----
 let currentTab = 'signin';
+// Flag: true while a sign-in/register action is handling its own redirect
+// Prevents the onAuthStateChanged listener from double-redirecting
+let authActionInProgress = false;
 
 // ============================================================
 // INIT — page load
@@ -33,13 +36,22 @@ document.addEventListener('DOMContentLoaded', () => {
     emailjs.init(EMAILJS_PUBLIC_KEY);
   }
 
-  // If user is already logged in → redirect away from auth page
-  auth.onAuthStateChanged((user) => {
-    if (user) {
-      const redirect = getRedirectParam() || 'index.html';
-      window.location.href = redirect;
-    }
-  });
+  // *** ONLY run the redirect logic on the auth page itself ***
+  // This prevents logged-in users from being bounced from every other page
+  const isAuthPage = window.location.pathname.endsWith('auth.html') ||
+                     window.location.pathname === '/auth' ||
+                     window.location.pathname === '/auth/';
+
+  if (isAuthPage) {
+    // If user is already logged in → redirect away from auth page
+    // Guard: skip if an action (signup/signin) is already handling the redirect
+    auth.onAuthStateChanged((user) => {
+      if (user && !authActionInProgress) {
+        const redirect = getRedirectParam() || 'index.html';
+        window.location.href = redirect;
+      }
+    });
+  }
 });
 
 function getRedirectParam() {
@@ -275,6 +287,7 @@ function showPageLoader(show) {
 // ============================================================
 async function signInWithGoogle() {
   clearAlert();
+  authActionInProgress = true;
   showPageLoader(true);
   try {
     const result = await auth.signInWithPopup(googleProvider);
@@ -294,6 +307,7 @@ async function signInWithGoogle() {
     showSuccess(`Welcome${isNewUser ? ', ' + (user.displayName || '') : ' back, ' + (user.displayName || '')}!`);
     setTimeout(() => { window.location.href = getRedirectParam() || 'index.html'; }, 1800);
   } catch (err) {
+    authActionInProgress = false;
     showPageLoader(false);
     showAlert(friendlyError(err), 'error');
   }
@@ -320,6 +334,7 @@ async function handleEmailSignIn(event) {
     return;
   }
 
+  authActionInProgress = true;
   setLoading('btn-email-signin', true);
   try {
     const result = await auth.signInWithEmailAndPassword(email, password);
@@ -329,6 +344,7 @@ async function handleEmailSignIn(event) {
     showSuccess(`Welcome back, ${user.displayName || email.split('@')[0]}!`);
     setTimeout(() => { window.location.href = getRedirectParam() || 'index.html'; }, 1600);
   } catch (err) {
+    authActionInProgress = false;
     setLoading('btn-email-signin', false);
     showAlert(friendlyError(err), 'error');
   }
@@ -388,6 +404,7 @@ async function handleRegister(event) {
   const fullPhone = countryCode + phoneRaw.replace(/[\s\-()]/g, '');
   const displayName = `${firstName} ${lastName}`;
 
+  authActionInProgress = true;
   setLoading('btn-register', true);
   try {
     // Create Firebase Auth account
@@ -406,11 +423,12 @@ async function handleRegister(event) {
     // Send welcome email via EmailJS
     await sendWelcomeEmailViaEmailJS(email, firstName);
 
-    // Show success screen
+    // Show success screen, then redirect after a short delay
     showSuccess(`Welcome, ${firstName}! 🎉 A verification email has been sent to ${email}.`);
-    setTimeout(() => { window.location.href = 'index.html'; }, 3000);
+    setTimeout(() => { window.location.href = 'index.html'; }, 2500);
 
   } catch (err) {
+    authActionInProgress = false;
     setLoading('btn-register', false);
     showAlert(friendlyError(err), 'error');
   }
