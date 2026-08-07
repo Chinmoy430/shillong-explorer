@@ -1,0 +1,17 @@
+{
+  "name": "Sawaiom Travels Agency",
+  "short_name": "Sawaiom",
+  "description": "Discover Shillong and Meghalaya with curated tours and travel experiences.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#2d8f55",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}

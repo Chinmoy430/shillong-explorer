@@ -1,34 +1,24 @@
-# ============================================================
-# Shillong Explorer — .gitignore
-# ============================================================
+# ── Node ──────────────────────────────────────────────────────
+node_modules/
+dist/
 
-# OS files
-.DS_Store
-Thumbs.db
-desktop.ini
+# ── Environment — NEVER commit secrets ────────────────────────
+.env
+.env.local
+.env.*.local
 
-# Editor / IDE
+# ── Vite ──────────────────────────────────────────────────────
+.vite/
+
+# ── Editor ────────────────────────────────────────────────────
 .vscode/
 .idea/
 *.suo
-*.user
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
 
-# Logs
-*.log
-npm-debug.log*
-
-# Environment / secrets (never commit these)
-.env
-.env.local
-.env.production
-
-# Gemini / AI agent files
-.gemini/
-
-# Node (if ever added)
-node_modules/
-dist/
-build/
-
-# Netlify
-.netlify/
+# ── OS ────────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db

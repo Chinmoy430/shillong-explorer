@@ -1,43 +1,17 @@
-# ============================================================
-# SAWAIOM TRAVELS AGENCY - Netlify Configuration
-# ============================================================
-
 [build]
-  publish = "."
+  # Vite outputs to 'dist/' by default
+  publish = "dist"
+  command = "npm run build"
 
-# ---- Redirect: clean URLs ----
+# ── SPA Routing — Critical for React Router ───────────────────
+# Without this rule, refreshing /tours or /admin would return a 404
+# because Netlify looks for a real file at that path.
+# This rule sends ALL requests to index.html and lets React Router
+# handle the routing client-side.
 [[redirects]]
-  from = "/home"
-  to   = "/index.html"
+  from = "/*"
+  to = "/index.html"
   status = 200
 
-# ---- Security headers for all pages ----
-[[headers]]
-  for = "/*"
-  [headers.values]
-    X-Frame-Options        = "DENY"
-    X-Content-Type-Options = "nosniff"
-    Referrer-Policy        = "strict-origin-when-cross-origin"
-    Permissions-Policy     = "geolocation=(), microphone=(), camera=()"
-
-# ---- Cache static assets aggressively ----
-[[headers]]
-  for = "/css/*"
-  [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable"
-
-[[headers]]
-  for = "/js/*"
-  [headers.values]
-    Cache-Control = "public, max-age=0, must-revalidate"
-
-[[headers]]
-  for = "/assets/*"
-  [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable"
-
-# ---- HTML pages - no cache (always fresh) ----
-[[headers]]
-  for = "/*.html"
-  [headers.values]
-    Cache-Control = "no-cache, no-store, must-revalidate"
+[build.environment]
+  NODE_VERSION = "20"

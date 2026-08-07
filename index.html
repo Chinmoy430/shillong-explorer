@@ -1,334 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SAWAIOM TRAVELS AGENCY — Discover the Scotland of the East</title>
-  <meta name="description" content="Explore Shillong's top attractions, waterfalls, and tour packages. Book guided tours to Cherrapunji, Dawki, Living Root Bridges and more.">
-  <link rel="stylesheet" href="css/main.css">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏔️</text></svg>">
-</head>
-<body id="home-page">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#2d8f55" />
+    <meta name="description" content="Explore Shillong's top attractions, waterfalls, and tour packages. Book guided tours to Cherrapunji, Dawki, Living Root Bridges and more." />
+    <meta name="keywords" content="Shillong tours, Meghalaya travel, Cherrapunji tour, Dawki boat ride, Living Root Bridges, travel agency" />
+    <meta property="og:title" content="Sawaiom Travels Agency" />
+    <meta property="og:description" content="Discover the Scotland of the East with curated Shillong and Meghalaya experiences." />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Sawaiom Travels Agency" />
+    <meta name="twitter:description" content="Explore Shillong and Meghalaya with guided tours and personalized travel plans." />
+    <title>Sawaiom Travels Agency — Discover the Scotland of the East</title>
 
-<!-- Mobile Menu -->
-<nav class="mobile-menu" id="mobile-menu" aria-label="Mobile Navigation">
-  <span class="mobile-menu-close" id="mobile-menu-close" aria-label="Close menu">✕</span>
-  <a href="index.html">🏠 Home</a>
-  <a href="attractions.html">🗺️ Attractions</a>
-  <a href="tours.html">🧳 Tour Packages</a>
-  <a href="contact.html">📞 Contact</a>
-  <a href="contact.html" style="background:var(--accent);color:#fff;padding:12px 32px;border-radius:50px;font-weight:700;">📅 Book a Tour</a>
-  <a href="auth.html">👤 Sign In / My Account</a>
-  <a href="admin/index.html" style="color:rgba(255,255,255,0.4);font-size:1rem;">⚙ Admin</a>
-</nav>
-
-<!-- Header -->
-<header class="header" id="header">
-  <nav class="nav">
-    <a href="index.html" class="logo">
-      <img src="assets/images/logo.png" alt="SAWAIOM TRAVELS AGENCY" style="height:44px;object-fit:contain;">
-      <span style="font-size:1.2rem;font-weight:700;color:#188029;letter-spacing:0.02em;white-space:nowrap;">Sawaiom Travels</span>
-    </a>
-    <div class="nav-links">
-      <a href="index.html" class="active">Home</a>
-      <a href="attractions.html">Attractions</a>
-      <a href="tours.html">Tour Packages</a>
-      <a href="contact.html">Contact</a>
+    <!--
+      📚 REACT CONCEPT: Single HTML File (SPA)
+      Unlike the old site that had index.html, attractions.html, tours.html etc.,
+      a React SPA has ONE index.html. React Router handles all navigation inside
+      the browser — the HTML file only loads once, and React swaps components
+      in/out of the #root div based on the URL.
+    -->
+  </head>
+  <body>
+    <div id="root">
+      <!--
+        React mounts the entire app here.
+        ReactDOM.createRoot(document.getElementById('root')).render(<App />)
+        in src/main.jsx injects everything into this div.
+      -->
     </div>
-    <div class="nav-cta">
-      <!-- Auth: populated by user-auth.js -->
-      <div class="nav-user-area" id="nav-user-area"></div>
-      <button class="hamburger" id="hamburger" aria-label="Open menu">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
-  </nav>
-</header>
-
-<!-- Hero -->
-<section class="hero" id="hero">
-  <div class="hero-bg" id="hero-bg"></div>
-  <div class="hero-overlay"></div>
-  <div class="hero-content">
-    <div class="hero-label">
-      <span class="dot"></span>
-      Northeast India's Premier Travel Agency
-    </div>
-    <h1 id="hero-title">Explore the Magic of <span>Shillong</span></h1>
-    <p class="hero-sub" id="hero-sub">Scotland of the East — Waterfalls, Caves, and Culture Await You</p>
-    <div class="hero-actions">
-      <a href="attractions.html" class="btn btn-accent" id="hero-cta">Browse Attractions →</a>
-      <a href="tours.html" class="btn btn-white">View Tour Packages</a>
-      <a href="contact.html" class="btn btn-accent">Book a Tour</a>
-    </div>
-    <div class="hero-stats">
-      <div class="hero-stat">
-        <span class="hero-stat-num" data-count="50">0+</span>
-        <span class="hero-stat-label">Attractions</span>
-      </div>
-      <div class="hero-stat">
-        <span class="hero-stat-num" data-count="25">0+</span>
-        <span class="hero-stat-label">Tour Packages</span>
-      </div>
-      <div class="hero-stat">
-        <span class="hero-stat-num" data-count="2000">0+</span>
-        <span class="hero-stat-label">Happy Travelers</span>
-      </div>
-      <div class="hero-stat">
-        <span class="hero-stat-num" data-count="5">0+</span>
-        <span class="hero-stat-label">Years Experience</span>
-      </div>
-    </div>
-  </div>
-  <div class="hero-scroll">↓</div>
-</section>
-
-<!-- Search Bar -->
-<section class="search-section">
-  <div class="container">
-    <div class="search-bar">
-      <span class="search-icon">🔍</span>
-      <input type="text" id="search-input" placeholder="Search attractions, waterfalls, tours..." aria-label="Search">
-      <button class="search-btn" id="search-btn">Search</button>
-    </div>
-  </div>
-</section>
-
-<!-- Categories -->
-<section class="categories-section">
-  <div class="container">
-    <div class="categories-scroll" id="category-chips" role="group" aria-label="Filter by category">
-      <!-- Rendered by JS -->
-    </div>
-  </div>
-</section>
-
-<!-- Featured Attractions -->
-<section class="attractions-section section-pad" id="featured-attractions">
-  <div class="container">
-    <div class="reveal">
-      <div class="section-label">Must Visit</div>
-      <h2 class="section-title">Top Attractions in <span>Shillong</span></h2>
-      <p class="section-subtitle">Explore breathtaking destinations handpicked by our local travel experts.</p>
-    </div>
-    <div class="attractions-grid" id="attractions-grid">
-      <!-- Rendered by JS -->
-    </div>
-    <div style="text-align:center;margin-top:40px;" class="reveal">
-      <a href="attractions.html" class="btn btn-outline">See All Attractions →</a>
-    </div>
-  </div>
-</section>
-
-<!-- Why Choose Us -->
-<section class="why-section">
-  <div class="container">
-    <div class="text-center reveal">
-      <div class="section-label" style="color:var(--accent);justify-content:center;">Why Choose Us</div>
-      <h2 class="section-title" style="color:var(--white);text-align:center;">Travel With Confidence</h2>
-      <p class="section-subtitle" style="color:rgba(255,255,255,0.5);margin:0 auto;text-align:center;">We make every journey memorable, comfortable, and perfectly tailored for you.</p>
-    </div>
-    <div class="why-grid">
-      <div class="why-card reveal">
-        <div class="why-icon">🗺️</div>
-        <div class="why-title">Local Experts</div>
-        <div class="why-desc">Born and raised in Shillong, our guides know every hidden trail and local secret.</div>
-      </div>
-      <div class="why-card reveal">
-        <div class="why-icon">💰</div>
-        <div class="why-title">Best Price Guarantee</div>
-        <div class="why-desc">Competitive pricing with no hidden charges. We promise you the best value.</div>
-      </div>
-      <div class="why-card reveal">
-        <div class="why-icon">🚗</div>
-        <div class="why-title">Comfortable Transport</div>
-        <div class="why-desc">Air-conditioned vehicles maintained to highest safety standards for your comfort.</div>
-      </div>
-      <div class="why-card reveal">
-        <div class="why-icon">📱</div>
-        <div class="why-title">24/7 Support</div>
-        <div class="why-desc">We're just a WhatsApp message away throughout your entire journey.</div>
-      </div>
-      <div class="why-card reveal">
-        <div class="why-icon">🎯</div>
-        <div class="why-title">Custom Itineraries</div>
-        <div class="why-desc">Tell us your interests and we'll craft a personalized tour just for you.</div>
-      </div>
-      <div class="why-card reveal">
-        <div class="why-icon">⭐</div>
-        <div class="why-title">5-Star Rated</div>
-        <div class="why-desc">Trusted by 2,000+ happy travelers with consistently excellent reviews.</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Tour Packages -->
-<section class="tours-section" id="featured-tours">
-  <div class="container">
-    <div class="reveal">
-      <div class="section-label">Explore Meghalaya</div>
-      <h2 class="section-title">Featured Tour <span>Packages</span></h2>
-      <p class="section-subtitle">Curated tour packages to the best of Shillong and Meghalaya.</p>
-    </div>
-    <div class="tours-grid" id="tours-grid">
-      <!-- Rendered by JS -->
-    </div>
-    <div style="text-align:center;margin-top:40px;" class="reveal">
-      <a href="tours.html" class="btn btn-primary">View All Packages →</a>
-    </div>
-  </div>
-</section>
-
-<!-- Testimonials -->
-<section class="testimonials-section">
-  <div class="container">
-    <div class="text-center reveal">
-      <div class="section-label" style="justify-content:center;">Happy Travelers</div>
-      <h2 class="section-title" style="text-align:center;">What Our Guests <span>Say</span></h2>
-      <p class="section-subtitle" style="margin:0 auto;text-align:center;">Real reviews from real travelers who explored Meghalaya with us.</p>
-    </div>
-    <div class="testimonials-grid" id="testimonials-grid">
-      <!-- Rendered by JS -->
-    </div>
-  </div>
-</section>
-
-<!-- Newsletter -->
-<section class="newsletter-section">
-  <div class="container">
-    <div class="newsletter-inner">
-      <div class="section-label" style="color:rgba(255,255,255,0.5);justify-content:center;">Stay Updated</div>
-      <h2 class="section-title">Get Travel Tips &amp; Deals</h2>
-      <p>Subscribe to our newsletter for exclusive deals, travel tips, and Shillong travel guides.</p>
-      <form class="newsletter-form" id="newsletter-form" onsubmit="handleNewsletter(event)">
-        <input type="email" placeholder="Your email address" required aria-label="Email address">
-        <button type="submit" class="newsletter-submit">Subscribe →</button>
-      </form>
-    </div>
-  </div>
-</section>
-
-<!-- Footer -->
-<footer class="footer">
-  <div class="container">
-    <div class="footer-grid">
-      <div class="footer-brand">
-        <div class="logo">
-          <img src="assets/images/logo.png" alt="SAWAIOM TRAVELS AGENCY" style="height:44px;object-fit:contain;">
-        </div>
-        <p>Your trusted travel partner for exploring the breathtaking landscapes of Shillong and Meghalaya. Every journey, a story worth telling.</p>
-        <div class="footer-socials">
-          <a href="#" class="social-link social-fb" target="_blank" title="Facebook" aria-label="Facebook">f</a>
-          <a href="#" class="social-link social-ig" target="_blank" title="Instagram" aria-label="Instagram">📷</a>
-          <a href="#" class="social-link social-yt" target="_blank" title="YouTube" aria-label="YouTube">▶</a>
-          <a href="#" class="social-link social-tw" target="_blank" title="Twitter" aria-label="Twitter">𝕏</a>
-        </div>
-      </div>
-      <div>
-        <h4 class="footer-heading">Explore</h4>
-        <ul class="footer-links">
-          <li><a href="attractions.html">Attractions</a></li>
-          <li><a href="tours.html">Tour Packages</a></li>
-          <li><a href="tours.html">Day Trips</a></li>
-          <li><a href="tours.html">Adventure Tours</a></li>
-          <li><a href="contact.html">Custom Tour</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4 class="footer-heading">Quick Links</h4>
-        <ul class="footer-links">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="contact.html">Contact Us</a></li>
-          <li><a href="contact.html">Book a Tour</a></li>
-          <li><a href="admin/index.html">Admin Panel</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4 class="footer-heading">Contact</h4>
-        <div class="footer-contact-item">
-          <span class="icon">📍</span>
-          <span class="site-address">Police Bazar, Shillong, Meghalaya</span>
-        </div>
-        <div class="footer-contact-item">
-          <span class="icon">📞</span>
-          <span class="site-phone">+91 98765 43210</span>
-        </div>
-        <div class="footer-contact-item">
-          <span class="icon">✉️</span>
-          <span class="site-email">hello@shillongexplorer.com</span>
-        </div>
-        <a href="#" class="site-whatsapp" class="btn btn-accent" style="display:inline-flex;align-items:center;gap:8px;margin-top:12px;background:#25D366;color:white;padding:10px 20px;border-radius:50px;font-size:0.85rem;font-weight:600;" target="_blank">
-          💬 Chat on WhatsApp
-        </a>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <p>© 2025 <span class="site-name">SAWAIOM TRAVELS AGENCY</span>. All rights reserved.</p>
-      <a href="admin/index.html">Admin Panel</a>
-    </div>
-  </div>
-</footer>
-
-<!-- Attraction Detail Modal -->
-<div class="modal-overlay" id="attraction-modal" role="dialog" aria-modal="true">
-  <div class="modal">
-    <div class="modal-img">
-      <img src="" alt="Attraction" id="modal-img">
-      <button class="modal-close" onclick="closeAttractionModal()" aria-label="Close">✕</button>
-    </div>
-    <div class="modal-body">
-      <div class="modal-category" id="modal-category"></div>
-      <h2 class="modal-title" id="modal-title"></h2>
-      <div class="modal-rating" id="modal-rating"></div>
-      <p class="modal-desc" id="modal-desc"></p>
-      <div class="modal-details">
-        <div class="modal-detail">
-          <span class="modal-detail-label">📍 Location</span>
-          <span class="modal-detail-value" id="modal-location"></span>
-        </div>
-        <div class="modal-detail">
-          <span class="modal-detail-label">⏱ Duration</span>
-          <span class="modal-detail-value" id="modal-duration"></span>
-        </div>
-        <div class="modal-detail">
-          <span class="modal-detail-label">📅 Best Time</span>
-          <span class="modal-detail-value" id="modal-best-time"></span>
-        </div>
-        <div class="modal-detail">
-          <span class="modal-detail-label">📌 Type</span>
-          <span class="modal-detail-value" id="modal-type"></span>
-        </div>
-      </div>
-      <div class="modal-actions">
-        <a href="#" class="btn btn-accent" id="modal-whatsapp" target="_blank">💬 Plan This Visit on WhatsApp</a>
-        <a href="tours.html" class="btn btn-outline">Browse Tour Packages</a>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- Firebase SDKs (compat) -->
-<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
-<script src="js/firebase-config.js?v=4"></script>
-<script src="js/user-auth.js?v=4"></script>
-<script src="js/data.js?v=4"></script>
-<script src="js/main.js?v=4"></script>
-<script>
-  // Mobile menu
-  document.getElementById('hamburger')?.addEventListener('click', () => {
-    document.getElementById('mobile-menu').classList.add('open');
-  });
-  document.getElementById('mobile-menu-close')?.addEventListener('click', () => {
-    document.getElementById('mobile-menu').classList.remove('open');
-  });
-  // Close modal on overlay click
-  document.getElementById('attraction-modal')?.addEventListener('click', function(e) {
-    if (e.target === this) closeAttractionModal();
-  });
-</script>
-</body>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
 </html>
